@@ -1,5 +1,16 @@
 <main>
     <div class="container-tasks-pending">
+        <form action="" class="add-task-form">
+            <input type="text" class="name-add-task-input"placeholder="Adicionar nova tarefa">
+            <div class="form-data-fields">
+                <input type="text" class="description-add-task-input" placeholder="Descrição">
+                <div class="divider-add-task-form"></div>
+                <div class="container-buttons-add-task">
+                    <button class="cancel-add-task">cancelar</button>
+                    <button class="save-add-task">salvar</button>
+                </div>
+            </div>
+        </form>
         <?php if (!empty($tarefas)): ?>
             <?php foreach ($tarefas as $tarefa): ?>
                 <?php if (!$tarefa['concluida']): ?>
@@ -23,7 +34,7 @@
     <div class="container-tasks-finished">
         <div class="show-tasks">
             <h2>Concluídas</h2>
-            <i class="fa-solid fa-caret-up close open"></i>
+            <i id="arrow" class="fa-solid fa-caret-up close"></i>
         </div>
         <div id="cards-tasks-finished" class="hide">
             <?php if (!empty($tarefas)): ?>
