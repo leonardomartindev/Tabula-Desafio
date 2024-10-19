@@ -186,10 +186,24 @@ main {
     gap: 15px;
 }
 
+
 .task-finished .input-name label {
     text-decoration: line-through;
     color: #999;
 }
+
+.task-finished {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 10px; /* Espaçamento entre as tarefas concluídas */
+
+}
+
 
 .hide{
     display: none;

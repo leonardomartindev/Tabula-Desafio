@@ -3,10 +3,10 @@
 require_once __DIR__ . '/../Models/Tarefa.php';
 
 class TarefaRepository {
-    private $conn;
+    private $db;
 
     public function __construct($db) {
-        $this->conn = $db;
+        $this->db = $db;
     }
 
     public function create(Tarefa $tarefa) {
@@ -17,11 +17,10 @@ class TarefaRepository {
         $stmt->bindParam(':concluida', $tarefa->concluida);
         return $stmt->execute();
     }
-    public function getAll(){
-        $query = "SELECT * FROM tarefas";
-        $stmt = $this->conn->prepare($query);
+    public function getAll() {
+        $stmt = $this->db->prepare("SELECT * FROM tarefas");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Tarefa');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna todas as tarefas como array associativo
     }
 
     public function pesquisarPorTitulo($title) {

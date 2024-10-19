@@ -17,13 +17,16 @@ const actualDate = document.getElementById("actual-date");
 actualDate.innerHTML = formattedDate;
 
 // Lógica para mostrar ou esconder as tarefas concluídas
-const containerTasksFinished = document.getElementById("container-tasks-finished");
+// Lógica para mostrar ou esconder as tarefas concluídas
+const containerTasksFinished = document.getElementById("cards-tasks-finished");
 const arrowShow = document.querySelector(".fa-solid");
 
 document.querySelector(".show-tasks").addEventListener("click", () => {
     containerTasksFinished.classList.toggle("hide");
     arrowShow.classList.toggle("open");
 });
+
+
 
 // Lógica para fechar e mostrar modal
 const modal = document.querySelector(".modal-container");

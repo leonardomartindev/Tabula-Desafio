@@ -5,8 +5,13 @@ require_once __DIR__ . '/../Repositories/TarefaRepository.php';
 class TarefaController {
     private $repository;
 
-    public function __contruct($db) {
+    public function __construct($db) {
         $this->repository = new TarefaRepository($db);
+    }
+
+    public function index() {
+        $tarefas = $this->repository->getAll();
+        require __DIR__ . '/../../views/listarTarefas.php';
     }
 
     public function criarTarefas($titulo, $descricao) {
