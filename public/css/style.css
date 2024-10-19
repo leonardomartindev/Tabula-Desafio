@@ -94,6 +94,11 @@ main {
     gap: 15px;
 }
 
+.deletar-button{
+    font-size: 20px;
+    padding: 0;
+}
+
 .add-task-form{
     display: flex;
     flex-direction: column;

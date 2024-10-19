@@ -12,24 +12,26 @@
             </div>
         </form>
 
-        <?php if (!empty($tarefas)): ?>
-            <?php foreach ($tarefas as $tarefa): ?>
-                <?php if (!$tarefa['concluida']): ?>
-                    <div class="task-pending">
-                        <div class="input-name">
-                            <input type="checkbox" id="task-<?= $tarefa['id'] ?>" class="custom-checkbox">
-                            <label for="task-<?= htmlspecialchars($tarefa['id']) ?>"><?= htmlspecialchars($tarefa['titulo']) ?></label>
-                        </div>
-                        <div class="icons-container">
-                            <i class="fa-regular fa-pen-to-square" data-id="<?= $tarefa['id'] ?>"></i>
-                            <i class="fa-regular fa-trash-can" data-id="<?= $tarefa['id'] ?>"></i>
-                        </div>
+        <?php foreach ($tarefas as $tarefa): ?>
+            <?php if (!$tarefa['concluida']): ?>
+                <div class="task-pending">
+                    <div class="input-name">
+                        <input type="checkbox" id="task-<?= $tarefa['id'] ?>" class="custom-checkbox">
+                        <label for="task-<?= htmlspecialchars($tarefa['id']) ?>"><?= htmlspecialchars($tarefa['titulo']) ?></label>
                     </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>Nenhuma tarefa encontrada.</p>
-        <?php endif; ?>
+                    <div class="icons-container">
+                        <i class="fa-regular fa-pen-to-square" data-id="<?= $tarefa['id'] ?>"></i>
+                        <form action="/deletarTarefa" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?= $tarefa['id'] ?>">
+                            <button class="deletar-button" type="submit" style="background:none;border:none;padding:0;">
+                                <i class="fa-regular fa-trash-can" data-id="<?= $tarefa['id'] ?>"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
     </div>
 
     <div class="container-tasks-finished">

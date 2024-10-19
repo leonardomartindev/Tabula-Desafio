@@ -5,10 +5,16 @@ require '../src/Controllers/TarefaController.php';
 $db = new PDO('mysql:host=localhost;dbname=tabula', 'root', 's3nhagener!ca');
 $controller = new TarefaController($db);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $controller->adicionarTarefa();
-} else {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['id'])) {
+        $controller->deletarTarefa($_POST['id']);
+    } else {
+        $controller->adicionarTarefa();
+    }
+    header('Location: /');
+    exit();
 }
+
 ?>
 
 <!DOCTYPE html>
