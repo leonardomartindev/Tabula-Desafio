@@ -22,7 +22,7 @@ document.querySelector(".show-tasks").addEventListener("click", () => {
 });
 
 // Lógica para fechar e mostrar modal
-const modal = document.querySelector(".modal-container");
+const modal = document.getElementById("modal-container");
 
 function closeModal(e) {
     e.preventDefault()

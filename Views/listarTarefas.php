@@ -20,13 +20,19 @@
                         <label for="task-<?= htmlspecialchars($tarefa['id']) ?>"><?= htmlspecialchars($tarefa['titulo']) ?></label>
                     </div>
                     <div class="icons-container">
-                        <i class="fa-regular fa-pen-to-square" data-id="<?= $tarefa['id'] ?>"></i>
-                        <form action="/deletarTarefa" method="POST" style="display:inline;">
-                            <input type="hidden" name="id" value="<?= $tarefa['id'] ?>">
-                            <button class="deletar-button" type="submit" style="background:none;border:none;padding:0;">
-                                <i class="fa-regular fa-trash-can" data-id="<?= $tarefa['id'] ?>"></i>
-                            </button>
-                        </form>
+                   <form action="/editarTarefa" method="POST" style="display:inline;">
+                       <input type="hidden" name="ids" value="<?= $tarefa['id'] ?>">
+                       <i class="editar-button fa-regular fa-pen-to-square" data-id="<?= $tarefa['id'] ?>" data-description="<?= htmlspecialchars($tarefa['descricao']) ?>"></i>
+                   </form>
+
+
+                       <form action="/deletarTarefa" method="POST" style="display:inline;">
+                           <input type="hidden" name="delete_id" value="<?= $tarefa['id'] ?>">
+                           <button class="deletar-button" type="submit" style="background:none;border:none;padding:0;">
+                               <i class="fa-regular fa-trash-can" data-id="<?= $tarefa['id'] ?>"></i>
+                           </button>
+                       </form>
+
                     </div>
                 </div>
             <?php endif; ?>
@@ -61,25 +67,27 @@
         </div>
     </div>
 
-    <div class="hide">
+    <div id="modal-container" class="hide">
         <div class="modal">
             <div class="header-modal">
                 <h2>Editar Tarefa</h2>
                 <i class="fa-solid fa-xmark close-modal"></i>
                 <div class="line-divider"></div>
             </div>
-            <form action="" class="edit-task-form">
+            <form action="/editarTarefa" method="POST" class="edit-task-form">
+                <input type="hidden" id="task-id" name="id"> <!-- Campo oculto para o ID -->
                 <label for="title-task-edit">Título</label>
-                <input type="text" id="title-task-edit" placeholder="Título da tarefa">
+                <input type="text" id="title-task-edit" name="titulo" placeholder="Título da tarefa" required>
 
                 <label for="description-task-edit">Descrição</label>
-                <textarea name="description-task-edit" id="description-task-edit"></textarea>
+                <textarea name="descricao" id="description-task-edit"></textarea>
 
                 <div class="buttons-task-edit">
-                    <button class="cancel-btn">cancelar</button>
-                    <button class="save-btn">salvar</button>
+                    <button type="button" class="cancel-btn">cancelar</button>
+                    <button type="submit" class="save-btn">salvar</button>
                 </div>
             </form>
         </div>
     </div>
+
 </main>

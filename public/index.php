@@ -6,8 +6,10 @@ $db = new PDO('mysql:host=localhost;dbname=tabula', 'root', 's3nhagener!ca');
 $controller = new TarefaController($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['id'])) {
-        $controller->deletarTarefa($_POST['id']);
+    if (isset($_POST['delete_id'])) {
+        $controller->deletarTarefa($_POST['delete_id']);
+    } elseif (isset($_POST['id'])) {
+        $controller->editarTarefa();
     } else {
         $controller->adicionarTarefa();
     }
@@ -40,5 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 
 <script src="./script/script.js"></script>
+<script src="./script/modal.js"></script>
 </body>
 </html>

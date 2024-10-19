@@ -15,7 +15,7 @@ class TarefaController {
     }
 
 
-    public function criarTarefas($titulo, $descricao = null) { // Define $descricao como null por padrão
+    public function criarTarefas($titulo, $descricao = null) {
         $tarefa = new Tarefa();
         $tarefa->titulo = $titulo;
         $tarefa->descricao = $descricao;
@@ -31,7 +31,7 @@ class TarefaController {
 
             if (!empty($titulo)) {
                 $this->criarTarefas($titulo, $descricao);
-                $this->gerarJson(); // Gera o arquivo JSON após adicionar
+                $this->gerarJson();
             }
 
             header('Location: /');
@@ -45,19 +45,32 @@ class TarefaController {
         return $this->repository->getAll();
     }
 
-    public function editarTarefa($id, $titulo, $descricao, $concluida){
-        $tarefa = new Tarefa();
-        $tarefa->id = $id;
-        $tarefa->titulo = $titulo;
-        $tarefa->descricao = $descricao;
-        $tarefa->concluida = $concluida;
-        $this->repository->update($tarefa);
-        $this->gerarJson(); // Gera o arquivo JSON após editar
-    }
+  public function editarTarefa() {
+      if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+          $id = $_POST['id'];
+          $titulo = $_POST['titulo'] ?? '';
+          $descricao = $_POST['descricao'] ?? '';
+
+          if (!empty($titulo)) {
+              $tarefa = new Tarefa();
+              $tarefa->id = $id;
+              $tarefa->titulo = $titulo;
+              $tarefa->descricao = $descricao;
+              $tarefa->concluida = 0;
+              $this->repository->update($tarefa);
+              $this->gerarJson();
+              header('Location: /');
+              exit();
+          }
+      }
+  }
+
+
+
 
     public function deletarTarefa($id){
         $this->repository->deletarTarefa($id);
-        $this->gerarJson(); // Gera o arquivo JSON após deletar
+        $this->gerarJson();
     }
 
 
@@ -70,12 +83,9 @@ class TarefaController {
     }
 
     public function gerarJson() {
-        $tarefas = $this->repository->getAll(); // Obtém todas as tarefas
-        $json = json_encode($tarefas, JSON_PRETTY_PRINT); // Converte para JSON
-
+        $tarefas = $this->repository->getAll();
+        $json = json_encode($tarefas, JSON_PRETTY_PRINT);
         $filePath = __DIR__ . '/../../data/tarefas.json';
-
-        // Salva o JSON no arquivo
         file_put_contents($filePath, $json);
     }
 
