@@ -22,6 +22,18 @@ class TarefaController {
         return $this->repository->criarTarefa($tarefa);
     }
 
+    public function adicionarTarefa() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $titulo = $_POST['titulo'] ?? '';
+            $descricao = $_POST['descricao'] ?? '';
+
+            $this->criarTarefas($titulo, $descricao);
+
+            header('Location: /');
+            exit();
+        }
+    }
+
     public function listarTarefa(){
         return $this->repository->getAll();
     }

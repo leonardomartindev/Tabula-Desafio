@@ -1,16 +1,17 @@
 <main>
     <div class="container-tasks-pending">
-        <form action="" class="add-task-form">
-            <input type="text" class="name-add-task-input"placeholder="Adicionar nova tarefa">
+        <form action="/" method="POST" class="add-task-form">
+            <input type="text" name="titulo" class="name-add-task-input" placeholder="Adicionar nova tarefa" required>
             <div class="form-data-fields">
-                <input type="text" class="description-add-task-input" placeholder="Descrição">
+                <input type="text" name="descricao" class="description-add-task-input" placeholder="Descrição" required>
                 <div class="divider-add-task-form"></div>
                 <div class="container-buttons-add-task">
-                    <button class="cancel-add-task">cancelar</button>
-                    <button class="save-add-task">salvar</button>
+                    <button type="button" class="cancel-add-task">cancelar</button>
+                    <button type="submit" class="save-add-task">salvar</button>
                 </div>
             </div>
         </form>
+
         <?php if (!empty($tarefas)): ?>
             <?php foreach ($tarefas as $tarefa): ?>
                 <?php if (!$tarefa['concluida']): ?>

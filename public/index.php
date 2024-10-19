@@ -1,12 +1,14 @@
 <?php
-// Inclua o arquivo de conexão com o banco de dados (ajuste o caminho se necessário)
-require_once '../config/database.php'; // Certifique-se de ter o arquivo de conexão com o banco
-
-// Inclua o controlador de tarefas
+require_once '../config/database.php';
 require '../src/Controllers/TarefaController.php';
 
-// Crie uma instância do controlador, passando a conexão do banco de dados
+$db = new PDO('mysql:host=localhost;dbname=tabula', 'root', 's3nhagener!ca');
 $controller = new TarefaController($db);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $controller->adicionarTarefa();
+} else {
+}
 ?>
 
 <!DOCTYPE html>
