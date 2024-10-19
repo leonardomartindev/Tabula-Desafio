@@ -10,7 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $controller->deletarTarefa($_POST['delete_id']);
     } elseif (isset($_POST['id'])) {
         $controller->editarTarefa();
-    } else {
+    } elseif (isset($_POST['search-task'])){
+        $tarefa = $_POST['search-task'];
+        $controller->pesquisarTarefas($tarefa);
+    }
+    else {
         $controller->adicionarTarefa();
     }
     header('Location: /');

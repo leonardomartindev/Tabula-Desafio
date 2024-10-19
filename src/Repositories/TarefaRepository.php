@@ -25,13 +25,12 @@ class TarefaRepository {
     }
 
     public function pesquisarPorTitulo($title) {
-        $query = "SELECT * FROM tarefas WHERE titulo LIKE :title ORDER BY concluida ASC, data_criacao DESC";
+        $query = "SELECT * FROM tarefas WHERE titulo LIKE :title";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':title', $title);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Tarefa');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
 
     public function update(Tarefa $tarefa) {
         $query = "UPDATE tarefas set titulo = :titulo, descricao = :descricao, concluida = :concluida WHERE id = :id";

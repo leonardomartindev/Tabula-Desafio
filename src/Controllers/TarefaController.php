@@ -65,9 +65,6 @@ class TarefaController {
       }
   }
 
-
-
-
     public function deletarTarefa($id){
         $this->repository->deletarTarefa($id);
         $this->gerarJson();
@@ -79,7 +76,8 @@ class TarefaController {
     }
 
     public function pesquisarTarefas($titulo) {
-        return $this->repository->pesquisarPorTitulo("%$titulo%");
+          $tarefas = $this->repository->pesquisarPorTitulo("%$titulo%");
+          require __DIR__ . '/../../views/resultadoBusca.php';
     }
 
     public function gerarJson() {
