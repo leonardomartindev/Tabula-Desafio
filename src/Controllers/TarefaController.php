@@ -14,7 +14,7 @@ class TarefaController {
         require __DIR__ . '/../../views/listarTarefas.php';
     }
 
-    public function criarTarefas($titulo, $descricao) {
+    public function criarTarefas($titulo, $descricao = null) { // Define $descricao como null por padrão
         $tarefa = new Tarefa();
         $tarefa->titulo = $titulo;
         $tarefa->descricao = $descricao;
@@ -22,17 +22,21 @@ class TarefaController {
         return $this->repository->criarTarefa($tarefa);
     }
 
+
     public function adicionarTarefa() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $titulo = $_POST['titulo'] ?? '';
-            $descricao = $_POST['descricao'] ?? '';
+            $descricao = $_POST['descricao'] ?? null;
 
-            $this->criarTarefas($titulo, $descricao);
+            if (!empty($titulo)) {
+                $this->criarTarefas($titulo, $descricao);
+            }
 
             header('Location: /');
             exit();
         }
     }
+
 
     public function listarTarefa(){
         return $this->repository->getAll();

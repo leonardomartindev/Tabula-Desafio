@@ -3,7 +3,7 @@
         <form action="/" method="POST" class="add-task-form">
             <input type="text" name="titulo" class="name-add-task-input" placeholder="Adicionar nova tarefa" required>
             <div class="form-data-fields">
-                <input type="text" name="descricao" class="description-add-task-input" placeholder="Descrição" required>
+                <input type="text" name="descricao" class="description-add-task-input" placeholder="Descrição">
                 <div class="divider-add-task-form"></div>
                 <div class="container-buttons-add-task">
                     <button type="button" class="cancel-add-task">cancelar</button>
