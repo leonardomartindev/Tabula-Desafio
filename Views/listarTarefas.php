@@ -1,6 +1,6 @@
 <main>
     <div class="container-tasks-pending">
-        <form action="/" method="POST" class="add-task-form">
+        <form action="/" method="POST" class="add-task-form" autocomplete="off">
             <input type="text" name="titulo" class="name-add-task-input" placeholder="Adicionar nova tarefa" required>
             <div class="form-data-fields">
                 <input type="text" name="descricao" class="description-add-task-input" placeholder="Descrição">
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </form>
-
+        <?php if (!empty($tarefas)): ?>
         <?php foreach ($tarefas as $tarefa): ?>
             <?php if (!$tarefa['concluida']): ?>
                 <div class="task-pending">
@@ -43,6 +43,9 @@
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>
+        <?php else: ?>
+            <?php require '../Views/notFoundTask.html'?>
+        <?php endif; ?>
 
     </div>
 
