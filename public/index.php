@@ -5,7 +5,6 @@ require '../src/Controllers/CategoriaController.php';
 
 $db = new PDO('mysql:host=localhost;dbname=tabula', 'root', 's3nhagener!ca');
 $controller = new TarefaController($db);
-
 $categoriaController = new CategoriaController($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -21,7 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (isset($_POST['uncheck-task'])) {
         $controller->desmarcarConcluida($_POST['uncheck-task']);
     } elseif (isset($_POST['nome'])) {
-        $categoriaController->adicionarCategoria();  // Adiciona a nova categoria
+        $categoriaController->adicionarCategoria();
+    } elseif (isset($_POST['delete_categoria_id'])) { // Certifique-se de que este nome corresponde ao campo do formulário
+        $categoriaController->deletarCategoria($_POST['delete_categoria_id']);
     } else {
         $controller->adicionarTarefa();
     }
@@ -30,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">

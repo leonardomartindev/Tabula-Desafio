@@ -10,11 +10,12 @@ class TarefaRepository {
     }
 
     public function criarTarefa(Tarefa $tarefa) {
-        $query = "INSERT INTO tarefas (titulo, descricao, concluida) VALUES (:titulo, :descricao, :concluida)";
+        $query = "INSERT INTO tarefas (titulo, descricao, concluida, categoria_id) VALUES (:titulo, :descricao, :concluida, :categoria_id)";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':titulo', $tarefa->titulo);
         $stmt->bindParam(':descricao', $tarefa->descricao);
         $stmt->bindParam(':concluida', $tarefa->concluida);
+        $stmt->bindParam(':categoria_id', $tarefa->categoria); // Aqui adicionamos a categoria
         return $stmt->execute();
     }
 
@@ -33,11 +34,13 @@ class TarefaRepository {
     }
 
     public function update(Tarefa $tarefa) {
-        $query = "UPDATE tarefas SET titulo = :titulo, descricao = :descricao, concluida = :concluida WHERE id = :id";
+        // Também incluímos a categoria na atualização
+        $query = "UPDATE tarefas SET titulo = :titulo, descricao = :descricao, concluida = :concluida, categoria_id = :categoria_id WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':titulo', $tarefa->titulo);
         $stmt->bindParam(':descricao', $tarefa->descricao);
         $stmt->bindParam(':concluida', $tarefa->concluida);
+        $stmt->bindParam(':categoria_id', $tarefa->categoria);
         $stmt->bindParam(':id', $tarefa->id);
         return $stmt->execute();
     }

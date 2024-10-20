@@ -32,10 +32,17 @@
                 <div class="categoria">
                     <i class="fa-regular fa-circle"></i>
                     <span><?php echo $categoria['nome']; ?></span>
-                    <i class="fa-solid fa-xmark delete-category"></i>
+                    <form action="/" method="POST" style="display:inline;">
+                        <input type="hidden" name="delete_categoria_id" value="<?php echo $categoria['id']; ?>">
+                        <button type="submit" class="delete-category" style="background:none; border:none; cursor:pointer;">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </form>
                 </div>
             <?php endforeach; ?>
         </div>
+
+
     </div>
 </div>
 

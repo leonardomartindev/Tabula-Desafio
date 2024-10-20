@@ -6,4 +6,5 @@ class Tarefa
     public $titulo;
     public $descricao;
     public $concluida;
+    public $categoria;
 }

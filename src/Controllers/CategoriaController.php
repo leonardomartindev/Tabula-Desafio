@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../Repositories/CategoriaRepository.php';
 
 class CategoriaController {
@@ -22,19 +21,18 @@ class CategoriaController {
 
     public function adicionarCategoria() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $nome = $_POST['nome'];  // O input do formulário tem o name 'nome'
+            $nome = $_POST['nome'];
 
             if (!empty($nome)) {
-                $this->criarCategoria($nome);  // Chama a função para criar a categoria
-                header('Location: /categorias');  // Redireciona de volta para a lista de categorias
-                exit();
+                $this->criarCategoria($nome);
             }
         }
     }
 
-
     public function deletarCategoria($id) {
-        $this->repository->deletarCategoria($id);
+        if (!empty($id)) {
+            $this->repository->deletarCategoria($id);
+        }
     }
 
 }
