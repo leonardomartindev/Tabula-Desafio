@@ -65,9 +65,12 @@
                                 </form>
                             </div>
                             <div class="icons-container">
-                                <i class="fa-regular fa-pen-to-square" data-id="<?= $tarefa['id'] ?>"></i>
-                                <i class="fa-regular fa-trash-can" data-id="<?= $tarefa['id'] ?>"></i>
-                            </div>
+                                <form action="/deletarTarefa" method="POST" style="display:inline;">
+                                    <input type="hidden" name="delete_id" value="<?= $tarefa['id'] ?>">
+                                    <button class="deletar-button" type="submit" style="background:none;border:none;padding:0;">
+                                        <i class="fa-regular fa-trash-can" data-id="<?= $tarefa['id'] ?>"></i>
+                                    </button>
+                                </form>                            </div>
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
