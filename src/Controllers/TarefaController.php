@@ -65,9 +65,11 @@ class TarefaController {
     }
 
     public function marcarTarefaConcluida($id) {
+        $this->gerarJson();
         return $this->repository->concluirTarefa($id);
     }
     public function desmarcarConcluida($id) {
+        $this->gerarJson();
         return $this->repository->desmarcarTarefaConcluida($id);
     }
 
