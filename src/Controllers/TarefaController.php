@@ -14,7 +14,6 @@ class TarefaController {
         require __DIR__ . '/../../views/listarTarefas.php';
     }
 
-
     public function criarTarefas($titulo, $descricao = null) {
         $tarefa = new Tarefa();
         $tarefa->titulo = $titulo;
@@ -22,7 +21,6 @@ class TarefaController {
         $tarefa->concluida = 0;
         return $this->repository->criarTarefa($tarefa);
     }
-
 
     public function adicionarTarefa() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -60,8 +58,7 @@ class TarefaController {
         }
     }
 
-
-    public function deletarTarefa($id){
+    public function deletarTarefa($id) {
         $this->repository->deletarTarefa($id);
         $this->gerarJson();
     }
@@ -70,14 +67,15 @@ class TarefaController {
         $this->gerarJson();
         return $this->repository->concluirTarefa($id);
     }
+
     public function desmarcarConcluida($id) {
         $this->gerarJson();
         return $this->repository->desmarcarTarefaConcluida($id);
     }
 
     public function pesquisarTarefas($titulo) {
-          $tarefas = $this->repository->pesquisarPorTitulo("%$titulo%");
-          require __DIR__ . '/../../views/resultadoBusca.php';
+        $tarefas = $this->repository->pesquisarPorTitulo("%$titulo%");
+        require __DIR__ . '/../../views/resultadoBusca.php';
     }
 
     public function gerarJson() {
@@ -86,7 +84,4 @@ class TarefaController {
         $filePath = __DIR__ . '/../../data/tarefas.json';
         file_put_contents($filePath, $json);
     }
-
-
-
 }

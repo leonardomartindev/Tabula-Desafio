@@ -10,23 +10,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $controller->deletarTarefa($_POST['delete_id']);
     } elseif (isset($_POST['id'])) {
         $controller->editarTarefa();
-    } elseif (isset($_POST['search-task'])){
+    } elseif (isset($_POST['search-task'])) {
         $tarefa = $_POST['search-task'];
         $controller->pesquisarTarefas($tarefa);
-    }
-    elseif (isset($_POST['task-id'])) {
+    } elseif (isset($_POST['task-id'])) {
         $controller->marcarTarefaConcluida($_POST['task-id']);
-    }
-    elseif (isset($_POST['uncheck-task'])) {
+    } elseif (isset($_POST['uncheck-task'])) {
         $controller->desmarcarConcluida($_POST['uncheck-task']);
-    }
-    else {
+    } else {
         $controller->adicionarTarefa();
     }
     header('Location: /');
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -38,19 +34,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/0ec44f1edc.js" crossorigin="anonymous"></script>
     <title>ToDo List Tabula</title>
 </head>
 <body>
 
 <header>
-    <?php require '../Views/inicioView.php'?>
+    <?php require '../views/inicioView.php'; ?>
 </header>
 
 <main>
     <?php $controller->index(); ?>
 </main>
 
+<script src="https://kit.fontawesome.com/0ec44f1edc.js" crossorigin="anonymous"></script>
 <script src="./script/script.js"></script>
 <script src="./script/modal.js"></script>
 </body>

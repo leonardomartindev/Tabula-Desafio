@@ -19,7 +19,7 @@ class TarefaRepository {
     }
 
     public function getAll() {
-        $stmt = $this->db->prepare("SELECT * FROM tarefas ");
+        $stmt = $this->db->prepare("SELECT * FROM tarefas");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -33,7 +33,7 @@ class TarefaRepository {
     }
 
     public function update(Tarefa $tarefa) {
-        $query = "UPDATE tarefas set titulo = :titulo, descricao = :descricao, concluida = :concluida WHERE id = :id";
+        $query = "UPDATE tarefas SET titulo = :titulo, descricao = :descricao, concluida = :concluida WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':titulo', $tarefa->titulo);
         $stmt->bindParam(':descricao', $tarefa->descricao);
@@ -50,19 +50,16 @@ class TarefaRepository {
     }
 
     public function concluirTarefa($id) {
-        $query = "UPDATE tarefas set concluida = 1 WHERE id = :id";
+        $query = "UPDATE tarefas SET concluida = 1 WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
+
     public function desmarcarTarefaConcluida($id) {
-        $query = "UPDATE tarefas set concluida = 0 WHERE id = :id";
+        $query = "UPDATE tarefas SET concluida = 0 WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
-
-
-
-
 }
