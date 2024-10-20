@@ -91,12 +91,15 @@
                 <div class="line-divider"></div>
             </div>
             <form action="/editarTarefa" method="POST" class="edit-task-form">
-                <input type="hidden" id="task-id" name="id"> <!-- Campo oculto para o ID -->
+                <input type="hidden" id="task-id" name="id">
                 <label for="title-task-edit">Título</label>
                 <input type="text" id="title-task-edit" name="titulo" placeholder="Título da tarefa" required>
 
                 <label for="description-task-edit">Descrição</label>
                 <textarea name="descricao" id="description-task-edit"></textarea>
+
+                <label for="completed-task-edit">Concluída</label>
+                <input type="checkbox" id="completed-task-edit" name="concluida" value="1">
 
                 <div class="buttons-task-edit">
                     <button type="button" class="cancel-btn">cancelar</button>

@@ -39,25 +39,27 @@ class TarefaController {
         }
     }
 
-  public function editarTarefa() {
-      if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
-          $id = $_POST['id'];
-          $titulo = $_POST['titulo'] ?? '';
-          $descricao = $_POST['descricao'] ?? '';
+    public function editarTarefa() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+            $id = $_POST['id'];
+            $titulo = $_POST['titulo'] ?? '';
+            $descricao = $_POST['descricao'] ?? '';
+            $concluida = isset($_POST['concluida']) ? 1 : 0;
 
-          if (!empty($titulo)) {
-              $tarefa = new Tarefa();
-              $tarefa->id = $id;
-              $tarefa->titulo = $titulo;
-              $tarefa->descricao = $descricao;
-              $tarefa->concluida = 0;
-              $this->repository->update($tarefa);
-              $this->gerarJson();
-              header('Location: /');
-              exit();
-          }
-      }
-  }
+            if (!empty($titulo)) {
+                $tarefa = new Tarefa();
+                $tarefa->id = $id;
+                $tarefa->titulo = $titulo;
+                $tarefa->descricao = $descricao;
+                $tarefa->concluida = $concluida;
+                $this->repository->update($tarefa);
+                $this->gerarJson();
+                header('Location: /');
+                exit();
+            }
+        }
+    }
+
 
     public function deletarTarefa($id){
         $this->repository->deletarTarefa($id);
