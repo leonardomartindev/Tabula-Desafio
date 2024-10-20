@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -46,8 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php $controller->index(); ?>
 </main>
 
+<aside class="close-sidebar">
+    <?php require '../views/sidebarView.html'; ?>
+</aside>
+
+
+
 <script src="https://kit.fontawesome.com/0ec44f1edc.js" crossorigin="anonymous"></script>
 <script src="./script/script.js"></script>
 <script src="./script/modal.js"></script>
+<script src="./script/sideBar.js"></script>
 </body>
 </html>

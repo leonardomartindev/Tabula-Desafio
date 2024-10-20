@@ -288,7 +288,7 @@ main {
     padding: 10px 15px;
     border-radius: 8px;
     width: 100%;
-    margin-bottom: 10px; /* Espaçamento entre as tarefas concluídas */
+    margin-bottom: 10px; 
 
 }
 
@@ -397,18 +397,18 @@ textarea {
 }
 
 .not-found-tasks-container h2 {
-    color: #333333; /* Cor mais escura para dar destaque */
+    color: #333333; 
     font-size: 24px;
 }
 
 .not-found-tasks-container p {
-    color: #666666; /* Um cinza mais suave para complementar */
+    color: #666666; 
     font-size: 18px;
     margin-top: 10px;
     font-weight: 500;
 }
 
-svg{
+.notFound-svg{
     width: 30%;
     height: auto;
     margin-top: 40px;

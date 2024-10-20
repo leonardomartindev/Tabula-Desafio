@@ -1,0 +1,159 @@
+aside {
+    width: 290px;
+    height: 100%;
+    background-color: #cecece;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(0); /* Inicia a sidebar visível */
+    transition: transform 0.3s ease; /* Transição suave */
+}
+
+.sidebar-container {
+    overflow: hidden;
+}
+
+.close-sidebar {
+    transform: translateX(-100%); /* Move a sidebar para fora da tela */
+}
+
+.tabula-svg{
+    width: 100%;
+    margin: auto;
+    padding: 25px;
+}
+
+.toggle-menu{
+    position: absolute;
+    right: -40px;
+    top: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.all-tasks-view{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    padding: 16px 25px;
+    width: auto;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all ease 200ms;
+    color: #222222;
+}
+
+.all-tasks-view:hover{
+    background-color: #e2e2e2;
+}
+
+.line {
+    width: 60%;
+    margin:auto;
+    height: 1.5px;
+    background-color: #A3A3A3;
+    margin-top: 15px;
+}
+
+.categorias-section{
+    display: flex;
+    flex-direction: column;
+    gap: 30px
+}
+
+.header-categorias{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 6px;
+    transition: all 200ms ease;
+}
+.header-categorias:hover{
+    background-color: #e2e2e2;
+}
+
+.fa-chevron-right{
+    transform: rotate(90deg);
+}
+
+.hide-category{ 
+    transform: rotate(0deg);
+}
+
+.add-category{
+    position: absolute;
+    right: 5px;
+    visibility: hidden;
+}
+.header-categorias:hover .add-category{
+    visibility: visible;
+}
+
+.add-new-category{
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    padding: 8px 5px;
+    border-radius: 6px;
+    outline: none;
+    color: #7e7e7e;
+}
+
+.hide-input{
+    display: none;
+}
+
+.categorias-section{
+    padding: 25px;
+}
+
+.categorias-container{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-left: 10px;
+}
+
+.hide-categories{
+    display: none;
+}
+
+.categoria{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 8px 5px;
+    cursor: pointer;
+    position: relative;
+    transition: all 100ms ease;
+    border-radius: 6px;
+}
+
+.delete-category{
+    position: absolute;
+    right: 6px;
+    font-size: 16px;
+    visibility: hidden;
+}
+
+.categoria:hover{
+    background-color: #e2e2e2;
+}
+.categoria:hover .delete-category{
+    visibility: visible;
+}
+
+.categoria span{
+    font-size: 18px;
+}
+
+.fa-circle{
+    font-size: 8px;
+}
+
