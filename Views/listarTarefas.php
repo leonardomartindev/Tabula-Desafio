@@ -57,8 +57,12 @@
                     <?php if ($tarefa['concluida']): ?>
                         <div class="task-finished">
                             <div class="input-name">
-                                <input type="checkbox" id="task-finished-<?= $tarefa['id'] ?>" class="custom-checkbox" checked>
-                                <label for="task-finished-<?= htmlspecialchars($tarefa['id']) ?>"><?= htmlspecialchars($tarefa['titulo']) ?></label>
+                                <form action="" method="POST" id="task-form-<?= $tarefa['id'] ?>">
+                                    <input name="uncheck-task" type="hidden" value="<?= $tarefa['id'] ?>">
+                                    <input name="uncheck-task" type="checkbox" id="uncheck-task-<?= $tarefa['id'] ?>" checked class="custom-checkbox"
+                                           onchange="document.getElementById('task-form-<?= $tarefa['id'] ?>').submit();">
+                                    <label for="uncheck-task-<?= htmlspecialchars($tarefa['id']) ?>"><?= htmlspecialchars($tarefa['titulo']) ?></label>
+                                </form>
                             </div>
                             <div class="icons-container">
                                 <i class="fa-regular fa-pen-to-square" data-id="<?= $tarefa['id'] ?>"></i>

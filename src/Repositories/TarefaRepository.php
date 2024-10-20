@@ -55,6 +55,14 @@ class TarefaRepository {
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
+    public function desmarcarTarefaConcluida($id) {
+        $query = "UPDATE tarefas set concluida = 0 WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id);
+        return $stmt->execute();
+    }
+
+
 
 
 }

@@ -67,6 +67,9 @@ class TarefaController {
     public function marcarTarefaConcluida($id) {
         return $this->repository->concluirTarefa($id);
     }
+    public function desmarcarConcluida($id) {
+        return $this->repository->desmarcarTarefaConcluida($id);
+    }
 
     public function pesquisarTarefas($titulo) {
           $tarefas = $this->repository->pesquisarPorTitulo("%$titulo%");

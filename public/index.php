@@ -17,6 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     elseif (isset($_POST['task-id'])) {
         $controller->marcarTarefaConcluida($_POST['task-id']);
     }
+    elseif (isset($_POST['uncheck-task'])) {
+        $controller->desmarcarConcluida($_POST['uncheck-task']);
+    }
     else {
         $controller->adicionarTarefa();
     }
