@@ -1,9 +1,12 @@
 <?php
 require_once '../config/database.php';
 require '../src/Controllers/TarefaController.php';
+require '../src/Controllers/CategoriaController.php';
 
 $db = new PDO('mysql:host=localhost;dbname=tabula', 'root', 's3nhagener!ca');
 $controller = new TarefaController($db);
+
+$categoriaController = new CategoriaController($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_id'])) {
@@ -17,12 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $controller->marcarTarefaConcluida($_POST['task-id']);
     } elseif (isset($_POST['uncheck-task'])) {
         $controller->desmarcarConcluida($_POST['uncheck-task']);
+    } elseif (isset($_POST['nome'])) {
+        $categoriaController->adicionarCategoria();  // Adiciona a nova categoria
     } else {
         $controller->adicionarTarefa();
     }
     header('Location: /');
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 
 <aside class="close-sidebar">
-    <?php require '../views/sidebarView.html'; ?>
+    <?php $categoriaController->index(); ?>
 </aside>
 
 

@@ -15,43 +15,28 @@
     <div class="line"></div>
 
     <div class="categorias-section">
-
-        <form action="">
+        <form action="/adicionar-categoria" method="POST">
             <div class="header-categorias">
-                <i class="fa-solid fa-chevron-right " id="toggle-category"></i>
+                <i class="fa-solid fa-chevron-right" id="toggle-category"></i>
                 <p>Categorias</p>
-                
                 <i class="fa-solid fa-plus add-category" id="add-category"></i>
             </div>
 
-            <input type="text" name="categoria" id="category" 
-            class="add-new-category hide-input" placeholder="Titulo da categoria">
-            <button hidden type="submit"></button>
+            <input type="text" name="nome" id="category"
+                   class="add-new-category hide-input" placeholder="Título da categoria">
+            <button type="submit">Adicionar Categoria</button>
         </form>
 
         <div class="categorias-container" id="categorias-container">
-
-            <div class="categoria">
-                <i class="fa-regular fa-circle"></i>
-                <span>Trabalho</span>
-
-                <i class="fa-solid fa-xmark delete-category"></i>
-            </div>
-            <div class="categoria">
-                <i class="fa-regular fa-circle"></i>
-                <span>Faculdade</span>
-
-                <i class="fa-solid fa-xmark delete-category"></i>
-            </div>
-            <div class="categoria">
-                <i class="fa-regular fa-circle"></i>
-                <span>Pessoal</span>
-
-                <i class="fa-solid fa-xmark delete-category"></i>
-            </div>
-
+            <?php foreach ($categorias as $categoria): ?>
+                <div class="categoria">
+                    <i class="fa-regular fa-circle"></i>
+                    <span><?php echo $categoria['nome']; ?></span>
+                    <i class="fa-solid fa-xmark delete-category"></i>
+                </div>
+            <?php endforeach; ?>
         </div>
-
     </div>
 </div>
+
     
