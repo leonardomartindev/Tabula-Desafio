@@ -101,6 +101,19 @@
                 <label for="completed-task-edit">Concluída</label>
                 <input type="checkbox" id="completed-task-edit" name="concluida" value="1">
 
+                <label for="category-task-edit">Categoria</label>
+                <select id="category-task-edit" name="categoria_id">
+                    <option value="" disabled <?= empty($tarefa['categoria_id']) ? 'selected' : ''; ?>>Selecione uma categoria</option>
+                    <?php foreach ($categorias as $categoria): ?>
+                        <option value="<?php echo $categoria['id']; ?>"
+                            <?= isset($tarefa['categoria_id']) && $tarefa['categoria_id'] == $categoria['id'] ? 'selected' : ''; ?>>
+                            <?php echo $categoria['nome']; ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+
+
+
                 <div class="buttons-task-edit">
                     <button type="button" class="cancel-btn">cancelar</button>
                     <button type="submit" class="save-btn">salvar</button>
@@ -108,5 +121,6 @@
             </form>
         </div>
     </div>
+
 
 </main>

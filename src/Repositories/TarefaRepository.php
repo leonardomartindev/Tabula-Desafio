@@ -25,6 +25,13 @@ class TarefaRepository {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getAllCategories()
+    {
+        $stm = $this->db->prepare("SELECT * FROM categorias");
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function pesquisarPorTitulo($title) {
         $query = "SELECT * FROM tarefas WHERE titulo LIKE :title";
         $stmt = $this->db->prepare($query);
@@ -34,7 +41,6 @@ class TarefaRepository {
     }
 
     public function update(Tarefa $tarefa) {
-        // Também incluímos a categoria na atualização
         $query = "UPDATE tarefas SET titulo = :titulo, descricao = :descricao, concluida = :concluida, categoria_id = :categoria_id WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':titulo', $tarefa->titulo);

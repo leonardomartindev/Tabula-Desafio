@@ -4,13 +4,20 @@
         "titulo": "123",
         "descricao": "",
         "concluida": 0,
-        "categoria_id": null
+        "categoria_id": 1
     },
     {
         "id": 62,
         "titulo": "teste",
         "descricao": "",
-        "concluida": 1,
+        "concluida": 0,
+        "categoria_id": 7
+    },
+    {
+        "id": 63,
+        "titulo": "sem",
+        "descricao": "",
+        "concluida": 0,
         "categoria_id": null
     }
 ]
