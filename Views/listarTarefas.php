@@ -16,8 +16,14 @@
             <?php if (!$tarefa['concluida']): ?>
                 <div class="task-pending">
                     <div class="input-name">
-                        <input type="checkbox" id="task-<?= $tarefa['id'] ?>" class="custom-checkbox">
-                        <label for="task-<?= htmlspecialchars($tarefa['id']) ?>"><?= htmlspecialchars($tarefa['titulo']) ?></label>
+                        <form action="" method="POST" id="task-form-<?= $tarefa['id'] ?>">
+                            <input name="task-id" type="hidden" value="<?= $tarefa['id'] ?>">
+                            <input name="check-task" type="checkbox" id="task-<?= $tarefa['id'] ?>" class="custom-checkbox"
+                                   onchange="document.getElementById('task-form-<?= $tarefa['id'] ?>').submit();">
+                            <label for="task-<?= htmlspecialchars($tarefa['id']) ?>"><?= htmlspecialchars($tarefa['titulo']) ?></label>
+                        </form>
+
+
                     </div>
                     <div class="icons-container">
                    <form action="/editarTarefa" method="POST" style="display:inline;">

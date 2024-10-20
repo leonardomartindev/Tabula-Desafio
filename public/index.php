@@ -14,6 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tarefa = $_POST['search-task'];
         $controller->pesquisarTarefas($tarefa);
     }
+    elseif (isset($_POST['task-id'])) {
+        $controller->marcarTarefaConcluida($_POST['task-id']);
+    }
     else {
         $controller->adicionarTarefa();
     }

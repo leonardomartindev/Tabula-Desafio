@@ -26,7 +26,7 @@ class TarefaController {
 
     public function adicionarTarefa() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $titulo = $_POST['titulo'] ?? '';
+            $titulo = $_POST['titulo'];
             $descricao = $_POST['descricao'] ?? null;
 
             if (!empty($titulo)) {
@@ -37,12 +37,6 @@ class TarefaController {
             header('Location: /');
             exit();
         }
-    }
-
-
-
-    public function listarTarefa(){
-        return $this->repository->getAll();
     }
 
   public function editarTarefa() {
@@ -69,7 +63,6 @@ class TarefaController {
         $this->repository->deletarTarefa($id);
         $this->gerarJson();
     }
-
 
     public function marcarTarefaConcluida($id) {
         return $this->repository->concluirTarefa($id);

@@ -19,7 +19,7 @@ class TarefaRepository {
     }
 
     public function getAll() {
-        $stmt = $this->db->prepare("SELECT * FROM tarefas ORDER BY titulo");
+        $stmt = $this->db->prepare("SELECT * FROM tarefas ");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
