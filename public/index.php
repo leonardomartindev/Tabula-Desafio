@@ -46,6 +46,9 @@ try {
         elseif(isset($_POST['delete_categoria_id'])) {
             $categoriaController->deletarCategoria($_POST['delete_categoria_id']);
             header('Location: /');
+        // Listar tarefas por categoria
+        } elseif (isset($_POST['categoria_id'])) {
+            $controller->listarTarefasPorCategoria($_POST['categoria_id']);
         }
         // Adicionar Nova Tarefa
         else {

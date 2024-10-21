@@ -6,7 +6,6 @@
                 <input type="text" name="descricao" class="description-add-task-input" placeholder="Descrição">
                 <div class="divider-add-task-form"></div>
                 <div class="container-buttons-add-task">
-                    <button type="button" class="cancel-add-task">cancelar</button>
                     <button type="submit" class="save-add-task">salvar</button>
                 </div>
             </div>

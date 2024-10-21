@@ -1,5 +1,5 @@
 aside {
-    width: 290px;
+    width: 300px;
     height: 100%;
     background-color: #cecece;
     position: fixed;
@@ -26,7 +26,7 @@ aside {
 .toggle-menu{
     position: absolute;
     right: -40px;
-    top: 20px;
+    top: 15px;
     font-size: 30px;
     cursor: pointer;
 }
@@ -59,7 +59,7 @@ aside {
 .categorias-section{
     display: flex;
     flex-direction: column;
-    gap: 30px
+
 }
 
 .header-categorias{
@@ -105,6 +105,10 @@ aside {
     color: #7e7e7e;
 }
 
+.submit-category{
+    visibility: hidden;
+}
+
 .hide-input{
     display: none;
 }
@@ -138,6 +142,7 @@ aside {
 .delete-category{
     position: absolute;
     right: 6px;
+    top: 14px;
     font-size: 16px;
     visibility: hidden;
 }

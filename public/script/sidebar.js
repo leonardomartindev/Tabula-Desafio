@@ -26,3 +26,5 @@ document.querySelector(".header-categorias").addEventListener("click", ()=>{
     arrowCategory.classList.toggle("hide-category")
     categories.classList.toggle("hide-categories")
 })
+
+

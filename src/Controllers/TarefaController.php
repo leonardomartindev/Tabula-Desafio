@@ -61,7 +61,6 @@ class TarefaController {
         }
     }
 
-
     public function deletarTarefa($id) {
         $this->repository->deletarTarefa($id);
         $this->gerarJson();
@@ -81,16 +80,15 @@ class TarefaController {
         $tarefas = $this->repository->pesquisarPorTitulo("%$titulo%");
         $categorias = $this->repository->getAllCategories();
 
-        require __DIR__ . '/../../views/inicioView.php'; // Adicione isso para incluir a visão inicial
+        require __DIR__ . '/../../views/inicioView.php';
         require __DIR__ . '/../../views/listarTarefas.php';
     }
     public function listarTarefasPorCategoria($categoriaId) {
         $tarefas = $this->repository->getTarefasPorCategoria($categoriaId);
         $categorias = $this->repository->getAllCategories();
+        require __DIR__ . '/../../views/inicioView.php';
         require __DIR__ . '/../../views/listarTarefas.php';
     }
-
-
 
     public function gerarJson() {
         $tarefas = $this->repository->getAll();
