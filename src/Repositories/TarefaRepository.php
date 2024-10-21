@@ -10,11 +10,12 @@ class TarefaRepository {
     }
 
     public function criarTarefa(Tarefa $tarefa) {
-        $query = "INSERT INTO tarefas (titulo, descricao, concluida) VALUES (:titulo, :descricao, :concluida)";
+        $query = "INSERT INTO tarefas (titulo, descricao, concluida, categoria_id) VALUES (:titulo, :descricao, :concluida, :categoria_id)";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':titulo', $tarefa->titulo);
         $stmt->bindParam(':descricao', $tarefa->descricao);
         $stmt->bindParam(':concluida', $tarefa->concluida);
+        $stmt->bindParam(':categoria_id', $tarefa->categoria); // Aqui adicionamos a categoria
         return $stmt->execute();
     }
 
@@ -22,6 +23,13 @@ class TarefaRepository {
         $stmt = $this->db->prepare("SELECT * FROM tarefas");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAllCategories()
+    {
+        $stm = $this->db->prepare("SELECT * FROM categorias");
+        $stm->execute();
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function pesquisarPorTitulo($title) {
@@ -32,12 +40,21 @@ class TarefaRepository {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getTarefasPorCategoria($categoriaId) {
+        $stmt = $this->db->prepare('SELECT * FROM tarefas WHERE categoria_id = :categoria_id');
+        $stmt->bindParam(':categoria_id', $categoriaId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function update(Tarefa $tarefa) {
-        $query = "UPDATE tarefas SET titulo = :titulo, descricao = :descricao, concluida = :concluida WHERE id = :id";
+        $query = "UPDATE tarefas SET titulo = :titulo, descricao = :descricao, concluida = :concluida, categoria_id = :categoria_id WHERE id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':titulo', $tarefa->titulo);
         $stmt->bindParam(':descricao', $tarefa->descricao);
         $stmt->bindParam(':concluida', $tarefa->concluida);
+        $stmt->bindParam(':categoria_id', $tarefa->categoria);
         $stmt->bindParam(':id', $tarefa->id);
         return $stmt->execute();
     }

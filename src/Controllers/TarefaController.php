@@ -11,6 +11,7 @@ class TarefaController {
 
     public function index() {
         $tarefas = $this->repository->getAll();
+        $categorias = $this->repository->getAllCategories();
         require __DIR__ . '/../../views/listarTarefas.php';
     }
 
@@ -43,6 +44,7 @@ class TarefaController {
             $titulo = $_POST['titulo'] ?? '';
             $descricao = $_POST['descricao'] ?? '';
             $concluida = isset($_POST['concluida']) ? 1 : 0;
+            $categoria_id = $_POST['categoria_id'] ?? null;
 
             if (!empty($titulo)) {
                 $tarefa = new Tarefa();
@@ -50,6 +52,7 @@ class TarefaController {
                 $tarefa->titulo = $titulo;
                 $tarefa->descricao = $descricao;
                 $tarefa->concluida = $concluida;
+                $tarefa->categoria = $categoria_id;
                 $this->repository->update($tarefa);
                 $this->gerarJson();
                 header('Location: /');
@@ -75,7 +78,16 @@ class TarefaController {
 
     public function pesquisarTarefas($titulo) {
         $tarefas = $this->repository->pesquisarPorTitulo("%$titulo%");
-        require __DIR__ . '/../../views/resultadoBusca.php';
+        $categorias = $this->repository->getAllCategories();
+
+        require __DIR__ . '/../../views/inicioView.php';
+        require __DIR__ . '/../../views/listarTarefas.php';
+    }
+    public function listarTarefasPorCategoria($categoriaId) {
+        $tarefas = $this->repository->getTarefasPorCategoria($categoriaId);
+        $categorias = $this->repository->getAllCategories();
+        require __DIR__ . '/../../views/inicioView.php';
+        require __DIR__ . '/../../views/listarTarefas.php';
     }
 
     public function gerarJson() {
