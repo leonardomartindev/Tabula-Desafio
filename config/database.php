@@ -1,7 +1,7 @@
 <?php
 $dsn = 'mysql:host=localhost;dbname=tabula';
-$username = 'root';
-$password = 's3nhagener!ca';
+$username = 'seu_usuario';
+$password = 'sua_senha';
 
 try {
     $db = new PDO($dsn, $username, $password);
