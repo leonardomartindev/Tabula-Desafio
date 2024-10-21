@@ -18,9 +18,6 @@ require '../src/Controllers/TarefaController.php';
 require '../src/Controllers/CategoriaController.php';
 
 try {
-    $db = new PDO('mysql:host=localhost;dbname=tabula', 'root', 's3nhagener!ca');
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $tarefaController = new TarefaController($db);
     $categoriaController = new CategoriaController($db);
 
@@ -65,6 +62,7 @@ function handlePostRequest($tarefaController, $categoriaController) {
     }
 }
 
+// Função para redirecionar para a página inicial
 function redirectToHome() {
     header('Location: /');
     exit();
@@ -72,7 +70,6 @@ function redirectToHome() {
 ?>
 
 <body>
-
 <?php $categoriaController->index(); ?>
 
 <script src="https://kit.fontawesome.com/0ec44f1edc.js" crossorigin="anonymous"></script>
