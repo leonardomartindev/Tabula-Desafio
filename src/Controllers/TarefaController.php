@@ -44,7 +44,7 @@ class TarefaController {
             $titulo = $_POST['titulo'] ?? '';
             $descricao = $_POST['descricao'] ?? '';
             $concluida = isset($_POST['concluida']) ? 1 : 0;
-            $categoria_id = $_POST['categoria_id'] ?? null;  // Aqui pegamos o ID da categoria
+            $categoria_id = $_POST['categoria_id'] ?? null;
 
             if (!empty($titulo)) {
                 $tarefa = new Tarefa();
@@ -52,8 +52,7 @@ class TarefaController {
                 $tarefa->titulo = $titulo;
                 $tarefa->descricao = $descricao;
                 $tarefa->concluida = $concluida;
-                $tarefa->categoria = $categoria_id;  // E atribuímos à tarefa
-
+                $tarefa->categoria = $categoria_id;
                 $this->repository->update($tarefa);
                 $this->gerarJson();
                 header('Location: /');
@@ -80,8 +79,18 @@ class TarefaController {
 
     public function pesquisarTarefas($titulo) {
         $tarefas = $this->repository->pesquisarPorTitulo("%$titulo%");
-        require __DIR__ . '/../../views/resultadoBusca.php';
+        $categorias = $this->repository->getAllCategories();
+
+        require __DIR__ . '/../../views/inicioView.php'; // Adicione isso para incluir a visão inicial
+        require __DIR__ . '/../../views/listarTarefas.php';
     }
+    public function listarTarefasPorCategoria($categoriaId) {
+        $tarefas = $this->repository->getTarefasPorCategoria($categoriaId);
+        $categorias = $this->repository->getAllCategories();
+        require __DIR__ . '/../../views/listarTarefas.php';
+    }
+
+
 
     public function gerarJson() {
         $tarefas = $this->repository->getAll();

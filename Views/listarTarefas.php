@@ -11,42 +11,39 @@
                 </div>
             </div>
         </form>
+
         <?php if (!empty($tarefas)): ?>
-        <?php foreach ($tarefas as $tarefa): ?>
-            <?php if (!$tarefa['concluida']): ?>
-                <div class="task-pending">
-                    <div class="input-name">
-                        <form action="" method="POST" id="task-form-<?= $tarefa['id'] ?>">
-                            <input name="task-id" type="hidden" value="<?= $tarefa['id'] ?>">
-                            <input name="check-task" type="checkbox" id="task-<?= $tarefa['id'] ?>" class="custom-checkbox"
-                                   onchange="document.getElementById('task-form-<?= $tarefa['id'] ?>').submit();">
-                            <label for="task-<?= htmlspecialchars($tarefa['id']) ?>"><?= htmlspecialchars($tarefa['titulo']) ?></label>
-                        </form>
-
-
+            <?php foreach ($tarefas as $tarefa): ?>
+                <?php if (!$tarefa['concluida']): ?>
+                    <div class="task-pending">
+                        <div class="input-name">
+                            <form action="" method="POST" id="task-form-<?= $tarefa['id'] ?>">
+                                <input name="task-id" type="hidden" value="<?= $tarefa['id'] ?>">
+                                <input name="check-task" type="checkbox" id="task-<?= $tarefa['id'] ?>" class="custom-checkbox"
+                                       onchange="document.getElementById('task-form-<?= $tarefa['id'] ?>').submit();">
+                                <label for="task-<?= htmlspecialchars($tarefa['id']) ?>"><?= htmlspecialchars($tarefa['titulo']) ?></label>
+                            </form>
+                        </div>
+                        <div class="icons-container">
+                            <form action="/editarTarefa" method="POST" style="display:inline;">
+                                <input type="hidden" name="ids" value="<?= $tarefa['id'] ?>">
+                                <i class="editar-button fa-regular fa-pen-to-square"
+                                   data-id="<?= $tarefa['id'] ?>"
+                                   data-description="<?= htmlspecialchars($tarefa['descricao']) ?>"
+                                   data-categoria_id="<?= htmlspecialchars($tarefa['categoria_id']) ?>"></i>                            </form>
+                            <form action="/deletarTarefa" method="POST" style="display:inline;">
+                                <input type="hidden" name="delete_id" value="<?= $tarefa['id'] ?>">
+                                <button class="deletar-button" type="submit" style="background:none;border:none;padding:0;">
+                                    <i class="fa-regular fa-trash-can" data-id="<?= $tarefa['id'] ?>"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="icons-container">
-                   <form action="/editarTarefa" method="POST" style="display:inline;">
-                       <input type="hidden" name="ids" value="<?= $tarefa['id'] ?>">
-                       <i class="editar-button fa-regular fa-pen-to-square" data-id="<?= $tarefa['id'] ?>" data-description="<?= htmlspecialchars($tarefa['descricao']) ?>"></i>
-                   </form>
-
-
-                       <form action="/deletarTarefa" method="POST" style="display:inline;">
-                           <input type="hidden" name="delete_id" value="<?= $tarefa['id'] ?>">
-                           <button class="deletar-button" type="submit" style="background:none;border:none;padding:0;">
-                               <i class="fa-regular fa-trash-can" data-id="<?= $tarefa['id'] ?>"></i>
-                           </button>
-                       </form>
-
-                    </div>
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
         <?php else: ?>
-            <?php require '../Views/notFoundTask.html'?>
+            <?php require '../Views/notFoundTask.html' ?>
         <?php endif; ?>
-
     </div>
 
     <div class="container-tasks-finished">
@@ -73,7 +70,8 @@
                                     <button class="deletar-button" type="submit" style="background:none;border:none;padding:0;">
                                         <i class="fa-regular fa-trash-can" data-id="<?= $tarefa['id'] ?>"></i>
                                     </button>
-                                </form>                            </div>
+                                </form>
+                            </div>
                         </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -105,14 +103,11 @@
                 <select id="category-task-edit" name="categoria_id">
                     <option value="" disabled <?= empty($tarefa['categoria_id']) ? 'selected' : ''; ?>>Selecione uma categoria</option>
                     <?php foreach ($categorias as $categoria): ?>
-                        <option value="<?php echo $categoria['id']; ?>"
-                            <?= isset($tarefa['categoria_id']) && $tarefa['categoria_id'] == $categoria['id'] ? 'selected' : ''; ?>>
+                        <option value="<?php echo $categoria['id']; ?>" <?= isset($tarefa['categoria_id']) && $tarefa['categoria_id'] == $categoria['id'] ? 'selected' : ''; ?>>
                             <?php echo $categoria['nome']; ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
-
-
 
                 <div class="buttons-task-edit">
                     <button type="button" class="cancel-btn">cancelar</button>
@@ -121,6 +116,4 @@
             </form>
         </div>
     </div>
-
-
 </main>

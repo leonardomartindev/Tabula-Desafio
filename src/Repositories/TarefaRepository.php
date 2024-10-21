@@ -40,6 +40,14 @@ class TarefaRepository {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getTarefasPorCategoria($categoriaId) {
+        $stmt = $this->db->prepare('SELECT * FROM tarefas WHERE categoria_id = :categoria_id');
+        $stmt->bindParam(':categoria_id', $categoriaId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function update(Tarefa $tarefa) {
         $query = "UPDATE tarefas SET titulo = :titulo, descricao = :descricao, concluida = :concluida, categoria_id = :categoria_id WHERE id = :id";
         $stmt = $this->db->prepare($query);

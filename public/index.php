@@ -3,33 +3,61 @@ require_once '../config/database.php';
 require '../src/Controllers/TarefaController.php';
 require '../src/Controllers/CategoriaController.php';
 
-$db = new PDO('mysql:host=localhost;dbname=tabula', 'root', 's3nhagener!ca');
-$controller = new TarefaController($db);
-$categoriaController = new CategoriaController($db);
+try {
+    $db = new PDO('mysql:host=localhost;dbname=tabula', 'root', 's3nhagener!ca');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['delete_id'])) {
-        $controller->deletarTarefa($_POST['delete_id']);
-    } elseif (isset($_POST['id'])) {
-        $controller->editarTarefa();
-    } elseif (isset($_POST['search-task'])) {
-        $tarefa = $_POST['search-task'];
-        $controller->pesquisarTarefas($tarefa);
-    } elseif (isset($_POST['task-id'])) {
-        $controller->marcarTarefaConcluida($_POST['task-id']);
-    } elseif (isset($_POST['uncheck-task'])) {
-        $controller->desmarcarConcluida($_POST['uncheck-task']);
-    } elseif (isset($_POST['nome'])) {
-        $categoriaController->adicionarCategoria();
-    } elseif (isset($_POST['delete_categoria_id'])) { // Certifique-se de que este nome corresponde ao campo do formulário
-        $categoriaController->deletarCategoria($_POST['delete_categoria_id']);
+    $controller = new TarefaController($db);
+    $categoriaController = new CategoriaController($db);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Deletar Tarefa
+        if (isset($_POST['delete_id'])) {
+            $controller->deletarTarefa($_POST['delete_id']);
+            header('Location: /');
+            exit();
+        }
+        // Editar Tarefa
+        elseif (isset($_POST['id'])) {
+            $controller->editarTarefa();
+        }
+        // Pesquisar Tarefas
+        elseif (isset($_POST['search-task'])) {
+            $tarefa = $_POST['search-task'];
+            $controller->pesquisarTarefas($tarefa);
+        }
+        // Marcar Tarefa como Concluída
+        elseif (isset($_POST['task-id'])) {
+            $controller->marcarTarefaConcluida($_POST['task-id']);
+            header('Location: /');
+        }
+        // Desmarcar Tarefa Concluída
+        elseif (isset($_POST['uncheck-task'])) {
+            $controller->desmarcarConcluida($_POST['uncheck-task']);
+            header('Location: /');
+
+        }
+        // Adicionar Categoria
+        elseif (isset($_POST['nome'])) {
+            $categoriaController->adicionarCategoria();
+            header('Location: /');
+        }
+        // Deletar categoria
+        elseif(isset($_POST['delete_categoria_id'])) {
+            $categoriaController->deletarCategoria($_POST['delete_categoria_id']);
+            header('Location: /');
+        }
+        // Adicionar Nova Tarefa
+        else {
+            $controller->adicionarTarefa();
+        }
     } else {
-        $controller->adicionarTarefa();
+        require '../views/inicioView.php';
+        $controller->index();
     }
-    header('Location: /');
-    exit();
+} catch (PDOException $e) {
+    echo 'Erro ao conectar ao banco de dados: ' . $e->getMessage();
 }
-
 ?>
 
 
@@ -48,16 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <header>
-    <?php require '../views/inicioView.php'; ?>
 </header>
 
 <main>
-    <?php $controller->index(); ?>
 </main>
 
-<aside class="close-sidebar">
     <?php $categoriaController->index(); ?>
-</aside>
 
 
 
