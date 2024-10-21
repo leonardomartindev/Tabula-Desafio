@@ -10,16 +10,18 @@ html, body {
     font-family: "Open Sans", sans-serif;
 }
 
+a{
+    text-decoration: none;
+
+}
+
 /* Fim do reset CSS */
 
 body {
     background-color: #F1F0EB;
 }
 
-a{
-    text-decoration: none;
 
-}
 
 header {
     display: flex;

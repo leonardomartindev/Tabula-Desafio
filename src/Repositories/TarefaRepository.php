@@ -15,7 +15,7 @@ class TarefaRepository {
         $stmt->bindParam(':titulo', $tarefa->titulo);
         $stmt->bindParam(':descricao', $tarefa->descricao);
         $stmt->bindParam(':concluida', $tarefa->concluida);
-        $stmt->bindParam(':categoria_id', $tarefa->categoria); // Aqui adicionamos a categoria
+        $stmt->bindParam(':categoria_id', $tarefa->categoria);
         return $stmt->execute();
     }
 

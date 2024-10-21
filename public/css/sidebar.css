@@ -5,8 +5,8 @@ aside {
     position: fixed;
     top: 0;
     left: 0;
-    transform: translateX(0); /* Inicia a sidebar visível */
-    transition: transform 0.3s ease; /* Transição suave */
+    transform: translateX(0);
+    transition: transform 0.3s ease;
 }
 
 .sidebar-container {
@@ -14,7 +14,7 @@ aside {
 }
 
 .close-sidebar {
-    transform: translateX(-100%); /* Move a sidebar para fora da tela */
+    transform: translateX(-100%);
 }
 
 .tabula-svg{
