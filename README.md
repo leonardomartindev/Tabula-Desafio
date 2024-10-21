@@ -116,3 +116,10 @@ Durante o desenvolvimento, enfrentei alguns desafios que impactaram a organizaç
 
 - Problema: A implementação da interatividade com modais de confirmação e uma sidebar dinâmica foi um desafio no front-end.
 - Solução: Usei JavaScript e CSS para controlar a visibilidade dos modais e da sidebar, mantendo uma interface fluida e responsiva.
+
+---
+
+## Contato
+
+Você pode me encontrar em:
+- LinkedIn: [Leonardo Martin de Oliveira](https://www.linkedin.com/in/leonardo-martin-dev/)
