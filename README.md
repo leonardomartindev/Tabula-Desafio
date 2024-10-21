@@ -117,6 +117,8 @@ Durante o desenvolvimento, enfrentei alguns desafios que impactaram a organizaç
 - Problema: A implementação da interatividade com modais de confirmação e uma sidebar dinâmica foi um desafio no front-end.
 - Solução: Usei JavaScript e CSS para controlar a visibilidade dos modais e da sidebar, mantendo uma interface fluida e responsiva.
 
+![image](https://github.com/user-attachments/assets/547983ae-8b36-4668-8aaf-7d1c76163e83)
+
 ---
 
 ## Contato
