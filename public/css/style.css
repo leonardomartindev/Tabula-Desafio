@@ -71,7 +71,7 @@ header {
 }
 .search-form button{
     padding: 10px;
-
+    cursor: pointer;
     background-color: transparent;
     border: none;
 }
@@ -165,10 +165,7 @@ main {
     cursor: pointer;
 }
 
-.cancel-add-task{
-    background-color: #505050;
-    color: #fff;
-}
+
 
 .form-data-fields{
     height: 0;
@@ -196,6 +193,11 @@ main {
     display: flex;
     gap: 15px;
     font-size: 20px;
+    cursor: pointer;
+}
+
+.deletar-button{
+    cursor: pointer;
 }
 
 .icons-container > i {

@@ -15,15 +15,15 @@
     },
     {
         "id": 79,
-        "titulo": "Assistir s\u00e9rie",
-        "descricao": null,
+        "titulo": "Assistir s\u00e9ries",
+        "descricao": "",
         "concluida": 0,
         "categoria_id": 17
     },
     {
         "id": 80,
         "titulo": "Ir ao m\u00e9dico",
-        "descricao": null,
+        "descricao": "",
         "concluida": 0,
         "categoria_id": 18
     },

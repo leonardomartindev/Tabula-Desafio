@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="icon" href="./img/tabulaLogo.png" type="image/png">
+    <title>ToDo List Tabula</title>
+</head>
+
 <?php
 require_once '../config/database.php';
 require '../src/Controllers/TarefaController.php';
@@ -57,35 +71,14 @@ function redirectToHome() {
 }
 ?>
 
-
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/sidebar.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    <title>ToDo List Tabula</title>
-</head>
 <body>
 
-<header>
-</header>
-
-<main>
-</main>
-
-    <?php $categoriaController->index(); ?>
-
-
+<?php $categoriaController->index(); ?>
 
 <script src="https://kit.fontawesome.com/0ec44f1edc.js" crossorigin="anonymous"></script>
 <script src="./script/script.js"></script>
 <script src="./script/modal.js"></script>
-<script src="./script/sideBar.js"></script>
+<script src="./script/sidebar.js"></script>
+
 </body>
 </html>
